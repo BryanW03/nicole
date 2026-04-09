@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paneles Solares — Misioneros Jóvenes Haití</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; padding: 2rem 1rem; }
+    .container { max-width: 720px; margin: 0 auto; }
+ 
+    /* Header */
+    .header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.75rem; }
+    .header-icon { width: 44px; height: 44px; border-radius: 12px; background: #e6f1fb; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .header h1 { font-size: 20px; font-weight: 600; color: #1a1a18; margin-bottom: 2px; }
+    .header p { font-size: 13px; color: #73726c; }
+ 
+    /* Cards */
+    .card { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 14px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+    .stat-card { background: #f1efe8; border-radius: 14px; padding: 1rem 1.25rem; }
+ 
+    /* Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1rem; }
+ 
+    .section-title { font-size: 11px; font-weight: 600; color: #9c9a92; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; }
+    .big-num { font-size: 30px; font-weight: 600; margin: 0; }
+    .sub-label { font-size: 12px; color: #73726c; margin-top: 4px; }
+ 
+    .green { color: #0f6e56; }
+    .amber { color: #854f0b; }
+    .red { color: #a32d2d; }
+    .blue { color: #185fa5; }
+ 
+    /* Badge */
+    .badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; white-space: nowrap; }
+    .badge-green { background: #e1f5ee; color: #0f6e56; }
+    .badge-amber { background: #faeeda; color: #854f0b; }
+    .badge-red { background: #fcebeb; color: #a32d2d; }
+    .badge-blue { background: #e6f1fb; color: #185fa5; }
+ 
+    /* Progress bar */
+    .progress-wrap { height: 14px; background: #f1efe8; border-radius: 99px; overflow: hidden; margin: 8px 0; }
+    .progress-fill { height: 100%; border-radius: 99px; background: #0f6e56; }
+    .progress-labels { display: flex; justify-content: space-between; font-size: 12px; color: #73726c; }
+ 
+    /* Mini bar */
+    .mini-bar-wrap { height: 6px; background: #f1efe8; border-radius: 99px; overflow: hidden; margin-top: 3px; }
+    .mini-bar-fill { height: 100%; border-radius: 99px; }
+    .row-item { margin-bottom: 10px; }
+    .row-item-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; gap: 10px; }
+    .row-item-header span:first-child { color: #5f5e5a; }
+    .row-item-header span:last-child { font-weight: 600; flex-shrink: 0; }
+ 
+    /* House grid */
+    .house-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(30px, 1fr)); gap: 6px; margin-bottom: 12px; }
+    .house-icon { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 7px; font-size: 17px; background: #e1f5ee; }
+ 
+    /* Tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .tab-btn { font-size: 13px; padding: 6px 16px; border-radius: 20px; border: 0.5px solid rgba(0,0,0,0.15); cursor: pointer; background: transparent; color: #73726c; font-weight: 500; transition: all .15s; }
+    .tab-btn.active { background: #e6f1fb; color: #185fa5; border-color: transparent; font-weight: 600; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+ 
+    .divider { border: none; border-top: 0.5px solid rgba(0,0,0,0.1); margin: 12px 0; }
+    .total-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600; }
+ 
+    /* Financial rows */
+    .fin-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 4px 0; gap: 10px; }
+    .fin-row span:first-child { color: #5f5e5a; }
+    .fin-row span:last-child { font-weight: 600; text-align: right; }
+ 
+    /* Source badges */
+    .sources { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1rem; }
+ 
+    /* Completion banner */
+    .banner { background: #e1f5ee; border: 0.5px solid #9fe1cb; border-radius: 14px; padding: 1rem 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+    .banner-icon { font-size: 28px; }
+    .banner h2 { font-size: 15px; font-weight: 600; color: #0f6e56; }
+    .banner p { font-size: 13px; color: #085041; margin-top: 2px; }
+ 
+    /* Print styles */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .tab-btn { display: none; }
+      .tab-content { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+ 
+  <div class="header">
+    <div class="header-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#185fa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Paneles Solares — Misioneros Jóvenes</h1>
+      <p>Haití · Programa iniciado 2023 · ELEKTR-A-SERVICE</p>
+    </div>
+  </div>
+ 
+  <div class="banner">
+    <div class="banner-icon">✅</div>
+    <div>
+      <h2>¡Programa completado al 100%!</h2>
+      <p>Las 28 viviendas de misioneros jóvenes cuentan con paneles solares instalados.</p>
+    </div>
+  </div>
+ 
+  <div class="grid-3">
+    <div class="stat-card">
+      <p class="section-title">Instaladas</p>
+      <p class="big-num green">28</p>
+      <p class="sub-label">viviendas</p>
+    </div>
+    <div class="stat-card">
+      <p class="section-title">Pendientes</p>
+      <p class="big-num green">0</p>
+      <p class="sub-label">viviendas</p>
+    </div>
+    <div class="stat-card">
+      <p class="section-title">Total</p>
+      <p class="big-num">28</p>
+      <p class="sub-label">viviendas</p>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <p class="section-title" style="margin:0;">Progreso general</p>
+      <span class="badge badge-green">100% completado</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-fill" style="width:100%;"></div>
+    </div>
+    <div class="progress-labels">
+      <span>0</span>
+      <span class="green" style="font-weight:600;">▪ 28 de 28 instaladas</span>
+      <span>28</span>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <p class="section-title">Mapa de viviendas</p>
+    <div class="house-grid" id="house-grid"></div>
+    <div style="display:flex;gap:14px;font-size:12px;color:#73726c;">
+      <span style="display:flex;align-items:center;gap:5px;">
+        <span style="width:10px;height:10px;border-radius:3px;background:#e1f5ee;display:inline-block;border:1px solid #9fe1cb;"></span>
+        Instalada
+      </span>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('install', this)">Instalación</button>
+      <button class="tab-btn" onclick="showTab('deinstall', this)">Desinstalación</button>
+    </div>
+ 
+    <div class="tab-content active" id="tab-install">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:10px;">
+        <div>
+          <p class="section-title" style="margin-bottom:4px;">Costo por vivienda · Factura E-0111</p>
+          <p style="font-size:24px;font-weight:700;color:#1a1a18;">$3,030.58 <span style="font-size:13px;font-weight:400;color:#73726c;">USD</span></p>
+        </div>
+        <span class="badge badge-green">Instalación nueva</span>
+      </div>
+ 
+      <div class="row-item">
+        <div class="row-item-header"><span>4 Baterías 6v Trojan</span><span>$860.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:28%;background:#3B8BD4;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>Inverter VMAX 150W 12V</span><span>$400.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:13%;background:#3B8BD4;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>2 Paneles solares 700W</span><span>$380.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:12%;background:#1D9E75;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>Cables, breakers y materiales</span><span>$390.58</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:13%;background:#EF9F27;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>Mano de obra y transporte</span><span>$800.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:26%;background:#7F77DD;"></div></div>
+      </div>
+      <hr class="divider">
+      <div class="total-row"><span>Total instalación</span><span>$3,030.58</span></div>
+    </div>
+ 
+    <div class="tab-content" id="tab-deinstall">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:10px;">
+        <div>
+          <p class="section-title" style="margin-bottom:4px;">Costo por vivienda · Factura E-0103</p>
+          <p style="font-size:24px;font-weight:700;color:#1a1a18;">$1,160.00 <span style="font-size:13px;font-weight:400;color:#73726c;">USD</span></p>
+        </div>
+        <span class="badge badge-red">Desinstalación</span>
+      </div>
+ 
+      <div class="row-item">
+        <div class="row-item-header"><span>4 Baterías 6v Trojan (reemplazo)</span><span>$860.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:74%;background:#3B8BD4;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>Desinstalación + Mantenimiento</span><span>$250.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:21%;background:#7F77DD;"></div></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-header"><span>Transporte</span><span>$50.00</span></div>
+        <div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:4%;background:#EF9F27;"></div></div>
+      </div>
+      <hr class="divider">
+      <div class="total-row"><span>Total desinstalación</span><span>$1,160.00</span></div>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <p class="section-title">Resumen financiero</p>
+    <div class="fin-row">
+      <span>Total invertido (28 viviendas)</span>
+      <span class="green">$84,856.24</span>
+    </div>
+    <div class="fin-row">
+      <span>Costo promedio por vivienda</span>
+      <span>$3,030.58</span>
+    </div>
+    <div class="fin-row">
+      <span>Desinstalación por vivienda</span>
+      <span class="red">$1,160.00</span>
+    </div>
+    <div class="fin-row">
+      <span>Desinstalación total (28 casas)</span>
+      <span class="red">$32,480.00</span>
+    </div>
+    <hr class="divider">
+    <div class="total-row">
+      <span>Inversión total ejecutada</span>
+      <span style="font-size:17px;">$84,856.24</span>
+    </div>
+    <p style="font-size:11px;color:#9c9a92;margin-top:10px;">* Desinstalación aplica cuando se requiere reemplazar o reubicar equipos</p>
+  </div>
+ 
+  <div class="sources">
+    <span class="badge badge-blue">Factura E-0111 · 18-12-2025</span>
+    <span class="badge badge-blue">Factura E-0103 · 08-11-2025</span>
+    <span class="badge badge-green">ELEKTR-A-SERVICE</span>
+  </div>
+ 
+</div>
+ 
+<script>
+  // Build house grid once DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('house-grid');
+    if (grid) {
+      for (let i = 0; i < 28; i++) {
+        const d = document.createElement('div');
+        d.className = 'house-icon';
+        d.textContent = '🏠';
+        grid.appendChild(d);
+      }
+    }
+  });
+ 
+  // Tabs function
+  function showTab(tab, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
